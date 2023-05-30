@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Quizzing Web</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *  {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+  
+  /* Global Styles */
+  body {
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #333;
+      background-color: #fff;
+  }
+  
+  header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+  }
+  
+  nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: flex-end;
+  }
+  
+  nav ul li {
+      margin-left: 20px;
+  }
+  
+  nav ul li a {
+      color: #fff;
+      text-decoration: none;
+  }
+  
+  main {
+      padding: 40px;
+      text-align: center;
+  }
+  
+  h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+  }
+  
+  footer {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+  }
+  
+  footer p {
+      margin-bottom: 0;
+  }
+      </style>
+<body>
+    <div class="full-page">
+        <header>
+        <div class="navigation-bar">
+            <div class="logo">
+               <a href="formvalidation.html">Today's Quiz</a>
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li><a href="leaderboard.html">Leaderboard</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="quiz.html">Back to Home page</a></li>
+                    <li><button class="signin" onclick="signin('login.html')">Sign In</button></li>
+                    <li><button class="logoutbtn" onclick="logout('logout.html')" >Signout</button></li>
+                </ul>
+            </nav>
+        </div>
+  </header>
+    <div class="main-content">
+            <h1>About Us</h1>
+            <h4>We are a team of passionate quizzers who love to create fun and engaging quizzes for people of all ages. Our mission is to provide a platform for people to test their knowledge and learn new things in a fun and interactive way.</h4>
+         
+        </div>
+    	<footer>
+            <p>&copy; 2023 My Website. All rights reserved.</p>
+        </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        function signin() {
+            window.location.href =" login.html";
+        }
+        </script>
+     <script>      // Logout function
+        function logout() {
+            alert("Logout successful");
+            // Redirect to login page
+            window.location.replace("logout.html");
+            return false;
+        }
+        </script>
+</body>
+</html>

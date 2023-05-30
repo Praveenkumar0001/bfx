@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> 
+    <title>Web Login</title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Welcome to Quiz!</h1>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right" id="class-list">
+          <button><a href="logout.html" id="logout" style="display: none;">Log Out</a></button>
+        </ul>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right" id="class-list">
+          <button><a href="quiz3.html" id="Start quiz" style="display: none;">Start Quiz</a></button>
+        </ul>
+      </div>
+    </nav>      
+    <div class="container">
+      <form name="registration_form" id="registration_form" method="post" action="#" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" name="name" id="name" class="form-control" placeholder="Enter your Name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" name="email" id="email" class="form-control" placeholder="Enter your Email">
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" class="form-control" placeholder="Enter your Password">
+            </div>
+            <button type="button" id="register" class="btn btn-success">Register Now</button>
+          </div>
+        </div>
+      </form>
+      
+      <form name="login_form" id="login_form" method="post" action="#" enctype="multipart/form-data">
+        <div class="row">
+          <div class="col-sm-5">
+            <div class="form-group">
+              <label for="login_email">Email</label>
+              <input type="text" name="login_email" id="login_email" class="form-control" placeholder="Enter your Email">
+            </div>
+            <div class="form-group">
+              <label for="login_password">Password</label>
+              <input type="password" name="login_password" id="login_password" class="form-control" placeholder="Enter your Password">
+            </div>
+            <button type="button" id="login" class="btn btn-success">Login</button>
+          </div>
+        </div>
+      </form>
+    </div>
+</body>
+
+<script type="module">
+  // Import Firebase SDK modules
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-analytics.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.18.0/firebase-auth.js";
+
+  // Firebase configuration
+  const firebaseConfig = {
+  apiKey: "AIzaSyCIDHUVrsiV66u-Uivd1X5u6aAB5LD5idM",
+  authDomain: "quiz-c9a5e.firebaseapp.com",
+  projectId: "quiz-c9a5e",
+  storageBucket: "quiz-c9a5e.appspot.com",
+  messagingSenderId: "287686087161",
+  appId: "1:287686087161:web:3b9a2ef8dc611375206d28"
+};
+  // Initialize Firebase app
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  
+  // Get Firebase auth instance
+  const auth = getAuth();
+
+  // Register user event listener
+  document.getElementById("register").addEventListener("click", function () {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    // Check if name is provided
+    if (!name) {
+      alert("Please enter your name");
+      return;
+    }
+
+    // Create new user
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        alert("Registration successful!");
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(error.message);
+      });
+  });
+
+  // Login event listener
+  document.getElementById("login").addEventListener("click", function () {
+    const email = document.getElementById("login_email").value;
+    const password = document.getElementById("login_password").value;
+
+    // Sign in user
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log(user);
+        alert(`${user.email} logged in successfully!`);
+        document.getElementById("logout").style.display = "block";
+        document.getElementById("Start quiz").style.display = "block";
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(error.message);
+      });
+  });
+
+  // Logout event listener
+  document.getElementById("logout").addEventListener("click", function () {
+    // Sign out user
+    signOut(auth)
+      .then(() => {
+        console.log("Sign-out successful.");
+        alert("Sign-out successful.");
+        document.getElementById("logout").style.display = "none";
+      })
+      .catch((error) => {
+        console.error(error);
+        alert(error.message);
+      });
+  });
+</script>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Quiz</title>
+    <link rel="stylesheet" href="quiz3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+  </head>
+  <body>
+    <header class="header bg-primary">
+      <div class="left-title">Quiz</div>
+      <li><a href="quiz.html">Home</a></li>
+      <div class="right-title">
+        Time Left:   <span id="timer">00:00</span><br>
+        Total Questions: <span id="tque"></span>
+      </div>
+      <div class="clearfix"></div>
+    </header>
+    <div class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12">
+            <div id="result" class="quiz-body">
+              <form name="quizForm">
+                <fieldset class="form-group">
+                  <h4><span id="qid">1.</span> <span id="question"></span></h4>
+                  <div class="option-block-container" id="question-options"></div>
+                </fieldset>
+                <button type="button" name="previous" id="previous" class="btn btn-success">Previous</button>
+                <button type="button" name="next" id="next" onclick="updateTimer()" class="btn btn-success">Next</button>
+                <button type="button" name="submit" id="submit" onclick="submitQuiz()" class="btn btn-success">Submit Quiz</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" id="remainingTime" value="30">
+    <script defer src="quiz3.js"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" rel="noopener"></script>
+    <script async src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" rel="noopener"></script>
+    <script>
+      const quizDurationSeconds = 300;
+      const timer = document.querySelector('#timer');
+      let remainingTime = quizDurationSeconds;
+      const formatTime = (timeInSeconds) => {
+        const minutes = Math.floor(timeInSeconds / 60);
+        const seconds = timeInSeconds % 60;
+        const formattedMinutes = minutes.toString().padStart(2, '0');
+        const formattedSeconds = seconds.toString().padStart(2, '0');
+        return `${formattedMinutes}:${formattedSeconds}`;
+      };
+      const updateTimer = () => {
+        timer.textContent = formatTime(remainingTime);
+        remainingTime--;
+        if (remainingTime < 0) {
+          clearInterval(intervalId);
+          alert("Time's up! Thank you for taking the quiz.");
+          submitQuiz();
+        }
+      };
+  
+      // Update the timer display every second
+      const intervalId = setInterval(updateTimer, 1000);
+    </script>
+  
+    <script>
+      function submitQuiz() {
+        // Calculate the score and total number of questions
+        const scoreValue = calculateScore();
+        const totalQuestions = '5'; // Replace with the actual total number of questions
+  
+        // Save the score and total to localStorage
+        localStorage.setItem("quizScore", scoreValue);
+        localStorage.setItem("quizTotal", totalQuestions);
+  
+        // Generate the URL with the score and total parameters
+        const url = `score.html?score=${scoreValue}&total=${totalQuestions}`;
+  
+        // Redirect to the quiz-score.html page with the URL
+        window.location.href = score.html;
+      }
+  
+      function calculateScore() {
+        // Replace this with your own code to calculate the score
+        const scoreValue = '';
+        return scoreValue;
+      }
+    </script>
+  </body>
+  </html>

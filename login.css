@@ -1,0 +1,96 @@
+/* Use a CSS reset to ensure consistent styles across browsers */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    background-color: #d1dbdb;
+    font-size: 16px;
+  }
+  
+  .navbar {
+    font-size: 1.5em;
+    background-color:#b4bcb3;
+    color:  #454141;
+    padding: 10px;
+  }
+  
+  .container {
+    margin-top: 50px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+    box-shadow: #121212;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight:700;
+  }
+  
+  input[type="text"],
+  input[type="password"] {
+    margin: 1em;
+    width: 100%;
+    height: 45px;
+    padding: 10px;
+    border-radius: 11px;
+    border: none;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px  #656262;
+  }
+  
+  button[type="button"] {
+    
+    margin: .8em;
+    width: 100%;
+    height: 45px;
+    border-radius: 11px;
+    border:none;
+    background-color: #333;
+    color: #fffbfb;
+    font-size: 18px;
+    font-weight:  700;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
+    box-shadow: 1px 2px 3px  #575454;
+  }
+  
+  button[type="button"]:hover {
+    background-color: #5c675f;
+  }
+  .navbar h1 {
+ 
+    text-align: center;
+  }
+  .navbar-right button {
+    background-color: #8e8686;
+    width: auto;
+    border-radius: 15px;
+    padding: 1%;
+    font-size: .8em;
+    margin-top: 20px;
+    border: none;
+    text-decoration:solid;
+  
+    float:right;
+    margin-right: 5px;
+    transition:background-color 0.5s ease-in-out;
+  }
+  .navbar-right button:hover{
+    background-color: #5a5d5a;
+  }
+  
+  /* Add some responsive styles */
+  @media (min-width: 768px) {
+    .container {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  

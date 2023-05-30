@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzing Web</title>
+    <link rel="stylesheet" href="style.css">
+   <style>
+    body {
+        background: #e1ffe8;
+        background-image: url("background.jpg");
+        background-size: cover;
+        margin: 0;
+    }
+    header {
+background: linear-gradient(to right, #372824, #4f5a42);
+color: #fff;
+padding: 20px;
+}
+footer { position: relative;
+        top: 604px;
+        background-color: #5a5656;
+        color: #fff;
+        padding: 30px;
+        text-align: center;
+       
+    }
+    footer p {
+        margin: 0px 0px 0px 0px;
+    }   
+</style>
+<script>
+function signin() {
+    window.location.href =" login.html";
+}
+</script>
+</head>
+<body>
+    <div class="full-page">
+        <header>
+            <div class="navigation-bar">
+                <div class="logo">
+                    <a>Today's Quiz</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="quiz4.html">Add Question</a></li>
+                        <li><button class="signin" onclick="signin('login.html')">Sign In</button></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="content">
+            <h1>Welcome to the Quiz!</h1>
+            <h3>Test your knowledge with our quiz.</h3>
+        </div>
+        <footer>
+            <p>&copy; 2023 My Website. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

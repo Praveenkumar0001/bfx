@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Score</title>
+  <link rel="stylesheet" href="score.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="quiz.html">Back to Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Quiz Score</h1>
+    <p>You scored <span id="score"></span> out of <span id="total"></span>.</p>
+    <p><span id="result"></span></p>
+
+    <script>
+      // Get the score and total from the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const scoreValue = parseInt(urlParams.get("score"));
+      const totalQuestions = parseInt(urlParams.get("total"));
+
+      // Check for missing or invalid parameters
+      if (isNaN(scoreValue) || isNaN(totalQuestions)) {
+        document.getElementById("result").textContent = "Invalid quiz results. Please try again.";
+      } else {
+        // Set the score and total in the HTML
+        document.getElementById("score").textContent = scoreValue;
+        document.getElementById("total").textContent = totalQuestions;
+
+        // Determine the result message based on the score
+        const passingScore = Math.ceil(totalQuestions * 0.8);
+        let result;
+
+        if (scoreValue === totalQuestions) {
+          result = "Congratulations! You got a perfect score!";
+        } else if (scoreValue >= passingScore) {
+          result = "Great job! You passed the quiz!";
+        } else {
+          result = "Sorry, you did not pass the quiz. Please try again.";
+        }
+
+        // Set the result message in the HTML
+        document.getElementById("result").textContent = result;
+      }
+    </script>
+    
+</main>
+
+<footer>
+  <p>&copy; 2023 Quiz Score</p>
+</footer>
+  </body>
+</html>

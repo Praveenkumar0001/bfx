@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaderboard</title>
+    <style>
+      /* Set the font family and size for the entire page */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+      }
+
+      /* Style the leaderboard table */
+   
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      /* Style the table header */
+      thead {
+        background-color: #d5cccc;
+      }
+
+      th {
+        text-align: left;
+        padding: 10px;
+      }
+
+      /* Style the table rows */
+      td {
+        border: 1px solid #988383;
+        padding: 10px;
+      }
+
+      /* Style the table data cells */
+      td:nth-child(2),
+      td:nth-child(3),
+      td:nth-child(4) {
+        text-align: center;
+      }
+
+      /* Style the table rank cell */
+      td:nth-child(4) {
+        font-weight: bold;
+      }
+
+      /* Style the table rows on hover */
+      tbody tr:hover {
+        background-color: #dce7df;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Leaderboard</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Score</th>
+          <th>Rank</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-table">
+      </tbody>
+    </table>
+    <script>
+      // Retrieve the quiz results and score from local storage
+      const quizResults = JSON.parse(localStorage.getItem('quizResults'));
+      const score = quizResults.score;
+      const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+      
+      // Define the time period (in days) after which leaderboard data should be erased
+      const timePeriodInDays = .25;
+      const timePeriodInMilliseconds = timePeriodInDays * 24 * 60 * 60 * 1000;
+
+      // Filter out any leaderboard data that is older than the time period
+      const filteredLeaderboard = leaderboard.filter(data => (Date.now() - data.date) < timePeriodInMilliseconds);
+
+      // Add the quiz results to the leaderboard data
+      filteredLeaderboard.push({ 
+        name: quizResults.name,
+        score: score,
+        date: Date.now()
+      });
+  
+      // Sort the leaderboard data by score in descending order
+      filteredLeaderboard.sort((a, b) => b.score - a.score);
+  
+      // Save the updated leaderboard data to local storage
+      localStorage.setItem('leaderboard', JSON.stringify(filteredLeaderboard));
+  
+      // Add the leaderboard data to the table
+      const tableBody = document.getElementById('leaderboard-table');
+      filteredLeaderboard.forEach((data, index) => {
+        const row = document.createElement('tr');
+        const nameCell = document.createElement('td');
+        nameCell.textContent = data.name;
+        const scoreCell = document.createElement('td');
+        scoreCell.textContent = data.score;
+        const rankCell = document.createElement('td');
+        rankCell.textContent = index + 1;
+        const dateCell = document.createElement('td');
+        dateCell.textContent = new Date(data.date).toLocaleString();
+        row.appendChild(nameCell);
+        row.appendChild(scoreCell);
+        row.appendChild(rankCell);
+        row.appendChild(dateCell);
+        tableBody.appendChild(row);
+      });
+    </script>
+  </body>
+  
+</html>

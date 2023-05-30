@@ -1,0 +1,177 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Full page background image */
+  .full-page {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background: url("background.png");
+    background-size: cover;
+    background-position: center;
+  }
+  .body {
+    background: #e1ffe8;
+    margin: 0;
+}
+.header {
+background-color: #333;
+color: #fff;
+padding: 20px;
+}
+.footer { position: relative;
+    top: 604px;
+    background-color: #5a5656;
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+   
+}
+.footer p {
+    margin: 0px 0px 0px 0px;
+}   
+
+  
+  /* Navigation bar */
+  .navigation-bar {
+   
+    display: flex;
+    align-items: center;
+    padding: 20px 30px 50px 80px;
+  }
+  
+  /* Logo */
+  .logo {
+    position: fixed;
+    margin-top: 10px;
+  }
+  .logo a {
+    text-decoration: none;
+    color: rgb(156, 178, 153);
+    font-size: 3em;
+  }
+  
+  /* Navigation menu */
+  nav {
+    flex: 1;
+    position: fixed;
+    right: 0;
+  }
+  nav ul {
+    display: inline-block;
+    list-style: none;
+  }
+  nav ul li {
+    display: inline-block;
+    margin-right: 90px;
+    margin-top: 17px;
+  }
+  nav ul li a {
+    text-decoration: none;
+    font-size: 1.2em;
+    color: rgb(173, 133, 133);
+    font-family: sans-serif;
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  nav ul li a:hover {
+    color: rgb(215, 208, 221);
+  }
+  nav ul li button {
+    color: rgb(11, 13, 11);
+    background-color: rgb(160, 138, 125);
+    font-size:1.3em;
+    cursor: pointer;
+    width: 3cm;
+    height: 1cm;
+    border-radius: 3cm;
+    
+  }
+  nav ul li button:hover{
+color: rgb(207, 223, 211);
+  }
+  
+  /* Login form */
+  #login-form {
+    display: none;
+  }
+  .form-box {
+    width: 300px;
+    height: 350px;
+    position: relative;
+    top: 30px;
+    left: 610px;
+    background: rgba(156, 148, 148, 0.6);
+  }
+  .main-heading {
+    font-size: 2em;
+    color: rgb(197, 135, 115);
+    padding-bottom: 20px;
+  }
+  .form {
+    position: relative;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+  }
+  .form input {
+    font-family: sans-serif;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px;
+    font-size: 1em;
+  }
+  .form button {
+    font-family: sans-serif;
+    width: 100%;
+    color: rgb(243, 235, 235);
+    font-size: 1em;
+    cursor: pointer;
+    padding: 15px;
+    border: none;
+    background: rgb(92, 78, 73);
+  }
+  .form .asking {
+    font-size: 0.8em;
+    margin: 15;  
+     color: rgb(94, 81, 81);
+}
+.form .asking a
+{
+  font-size: 1.5em;
+    color: rgb(79, 29, 6);
+    text-decoration: none;
+
+}
+.form .register-form
+{
+    display: none;
+
+}
+.content{
+  width: 100%;
+  position: absolute;
+  top: 35%;
+  text-align: center;
+  color: black;
+}
+.content h1{
+  font-size:80px;
+  margin-top: 8px;
+
+}
+.conent p{
+  margin: 20px;
+  font-size: 80px;
+  margin-top:90px;
+}
+
